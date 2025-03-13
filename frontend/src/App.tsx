@@ -1,11 +1,28 @@
+import { createHashRouter, Outlet, RouterProvider } from "react-router"
+import RootLayout from "./components/layouts/RootLayout"
+import HomePage from "./routes/HomePage"
 
-function App() {
+const router = createHashRouter([
+    {
+      path: "/",
+      element: <RootLayout><Outlet /></RootLayout>,
+      children: [
+        {
+          path: "/",
+          element: <HomePage />
+        },
+        // {
+        //   path: "/item/:id",
+        // },
+      ]
+    }
+  ])
+  
+  function App() {
 
     return (
-        <div id="App" className="bg-amber-600">
-jj
-        </div>
+      <RouterProvider router={router} />
     )
-}
+  }
 
 export default App
